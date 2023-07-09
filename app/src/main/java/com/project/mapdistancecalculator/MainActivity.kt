@@ -56,11 +56,15 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                         e.printStackTrace()
                     }
                     lateinit var latLang:LatLng
-                    for(address in addressList){
-                        latLang=LatLng(address.latitude,address.longitude)
-                        map.addMarker(MarkerOptions().position(latLang).title(location))
+                    val distance= FloatArray(10)
+                    for(i in addressList.indices){
+                        latLang=LatLng(addressList[i].latitude,addressList[i].longitude)
+                        Location.distanceBetween(currLocation.latitude,currLocation.longitude,latLang.latitude,latLang.longitude,distance)
+                        map.addMarker(MarkerOptions().position(latLang).title(location).snippet("Distance = ${distance[i]/1000}km"))
                     }
                     map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLang,10f))
+
+                    Toast.makeText(this@MainActivity, "The distance between them ${distance[0]/1000}km ", Toast.LENGTH_SHORT).show()
                 }
                 return true
             }
@@ -92,7 +96,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                 map.animateCamera(CameraUpdateFactory.newLatLngZoom(you,12f))  //for zooming into location
             }
         }
-
 
     }
 
