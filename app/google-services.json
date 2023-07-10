@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "906920044241",
+    "project_id": "map-distance-calculator-87d47",
+    "storage_bucket": "map-distance-calculator-87d47.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:906920044241:android:bfe080448ab0682c8a47f0",
+        "android_client_info": {
+          "package_name": "com.project.mapdistancecalculator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "906920044241-i39mompanesh6smkf4t10fpqq7bhm9un.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCP_3myHkrSBMztm8JdcmLK7Lglq3IXGT0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "906920044241-i39mompanesh6smkf4t10fpqq7bhm9un.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

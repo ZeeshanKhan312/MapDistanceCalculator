@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class Splash : AppCompatActivity() {
     lateinit var start:LinearLayout
@@ -17,7 +19,7 @@ class Splash : AppCompatActivity() {
             val intent=Intent(this@Splash,SignInActivity::class.java)
             startActivity(intent)
             finish()
-
         })
+
     }
 }

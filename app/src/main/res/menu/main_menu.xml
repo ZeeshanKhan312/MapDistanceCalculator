@@ -12,4 +12,7 @@
     <item
         android:id="@+id/terrainMap"
         android:title="Terrain"/>
+    <item
+        android:id="@+id/signOut"
+        android:title="SIGN OUT"/>
 </menu>

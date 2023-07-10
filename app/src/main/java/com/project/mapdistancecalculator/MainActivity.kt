@@ -1,17 +1,21 @@
 package com.project.mapdistancecalculator
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -20,6 +24,9 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import java.io.IOException
 
 
@@ -29,12 +36,13 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     lateinit var currLocation :Location
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     lateinit var search:SearchView
-
+    private lateinit var auth:FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         search=findViewById(R.id.search_bar)
+        auth=Firebase.auth
 
 
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment //as keyword to typecast
@@ -138,6 +146,19 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         }
         else if(id==R.id.hybridMap){
             map.mapType = GoogleMap.MAP_TYPE_HYBRID
+        }
+        else if(id==R.id.signOut){
+            if(auth.currentUser!=null){
+                val gso= GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestIdToken(getString(R.string.default_web_client_id))
+                    .requestEmail().build()
+
+                auth.signOut()
+                GoogleSignIn.getClient(this,gso).signOut()
+
+                startActivity(Intent(this,Splash::class.java))
+                finish()
+            }
         }
         return super.onOptionsItemSelected(item)
     }

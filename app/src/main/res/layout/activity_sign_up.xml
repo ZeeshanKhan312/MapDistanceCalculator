@@ -45,7 +45,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         >
         <EditText
-            android:id="@+id/etSinUpName"
+            android:id="@+id/etSignUpName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
@@ -71,7 +71,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         >
         <EditText
-            android:id="@+id/etSinUpEmail"
+            android:id="@+id/etSignUpEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
@@ -99,7 +99,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         >
         <EditText
-            android:id="@+id/etSinUpPassword"
+            android:id="@+id/etSignUpPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
